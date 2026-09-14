@@ -105,7 +105,6 @@ function render(){
   const s=screens[state.screen];
   document.getElementById('pageTitle').textContent=s.title;
   document.getElementById('testPurpose').textContent=s.purpose;
-  document.getElementById('promptList').innerHTML=s.prompts.map(p=>`<li>${p}</li>`).join('');
   document.getElementById('deviceWrap').innerHTML = state.mode==='dock' ? dockShell(renderDockScreen()) : cartShell(renderCartScreen());
 }
 function dockShell(inner){
