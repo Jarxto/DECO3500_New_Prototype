@@ -138,36 +138,60 @@ function renderCartScreen(){
 
 function homeScreen(){
   return `
-    <h3>NutriCart Hub</h3>
-    <div class="sub">Shared household planning for tonight and the next grocery trip.</div>
-    <div class="screen-grid">
-      <div class="panel">
-        <h4>Tonight</h4>
-        <div class="big-stat">${state.chosenMeal}</div>
-        <p class="muted">Suggested by Jess</p>
-        <div class="btn-row"><button class="btn" onclick="setScreen('meals','dock')">View meals</button></div>
+    <div class="home-prototype">
+
+      <div class="home-prototype-title">
+        NutriCart<br>Hub
       </div>
-      <div class="panel">
-        <h4>Shopping needed</h4>
-        <div class="big-stat">${state.items.length + state.customItems.length} items</div>
-        <p class="muted">Household list ready</p>
-        <div class="btn-row"><button class="btn" onclick="setScreen('list','dock')">Open list</button></div>
+
+      <div class="home-prototype-grid">
+
+        <button class="home-menu-card" onclick="setScreen('meals','dock')">
+          <div class="home-menu-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M32 53S10 41 10 23c0-8 6-13 13-13 5 0 8 3 9 6 2-3 5-6 10-6 7 0 13 5 13 13 0 18-23 30-23 30Z"/>
+            </svg>
+          </div>
+          <span>Meals</span>
+        </button>
+
+        <button class="home-menu-card" onclick="setScreen('list','dock')">
+          <div class="home-menu-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="16" y="12" width="34" height="43" rx="2"/>
+              <path d="M25 12V8h16v4"/>
+              <path d="M24 25h18M24 34h18M24 43h18"/>
+            </svg>
+          </div>
+          <span>Shopping<br>List</span>
+        </button>
+
+        <button class="home-menu-card" onclick="setScreen('requests','dock')">
+          <div class="home-menu-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="22" r="8"/>
+              <circle cx="16" cy="27" r="6"/>
+              <circle cx="48" cy="27" r="6"/>
+              <path d="M20 49c1-10 6-15 12-15s11 5 12 15"/>
+              <path d="M5 49c1-8 5-12 11-12 3 0 5 1 7 3"/>
+              <path d="M59 49c-1-8-5-12-11-12-3 0-5 1-7 3"/>
+            </svg>
+          </div>
+          <span>Household</span>
+        </button>
+
+        <button class="home-menu-card start-card" onclick="setScreen('ready','dock')">
+          <div class="home-menu-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M23 13l27 19-27 19Z"/>
+            </svg>
+          </div>
+          <span>Start<br>Shopping</span>
+        </button>
+
       </div>
-      <div class="panel">
-        <h4>Household budget</h4>
-        <div class="big-stat">$${state.budget}</div>
-        <p class="muted">Set before shopping</p>
-        <div class="input-row"><input id="budgetInput" type="number" min="1" value="${state.budget}"><button class="btn" onclick="setBudget()">Set</button></div>
-      </div>
-      <div class="panel">
-        <h4>Requests</h4>
-        <p><strong>Jess:</strong> Cheap Greek yoghurt if you see it.</p>
-        <p><strong>Alex:</strong> We still have rice.</p>
-        <div class="btn-row"><button class="btn" onclick="setScreen('requests','dock')">View requests</button></div>
-      </div>
+
     </div>
-    <div class="divider"></div>
-    <button class="btn primary" onclick="setScreen('ready','dock')">Prepare shopping trip</button>
   `;
 }
 function listScreen(){
@@ -260,7 +284,6 @@ function shoppingScreen(){
   const spentPct=Math.min(100,(state.spent/state.budget)*100);
   return `
     <h3>Today's Shop</h3>
-    <div class="sub">Simple in-store mode. Checklist first, budget always visible.</div>
     <div class="panel">
       <strong>Budget</strong>
       <div class="budget-track"><div class="budget-fill" style="width:${spentPct}%"></div></div>
@@ -291,7 +314,6 @@ function compareScreen(){
     : [['Preparation','Ready to eat','Ready to eat'],['Price','$4.00','$5.20'],['Protein','8 g','15 g'],['Sugar','9 g','4 g']];
   return `
     <h3>Compare</h3>
-    <div class="sub">The device does not decide which product is healthier. You choose what matters.</div>
     <div class="priority">
       <button class="${p==='price'?'active':''}" onclick="setPriority('price')">PRICE</button>
       <button class="${p==='time'?'active':''}" onclick="setPriority('time')">TIME</button>
@@ -312,11 +334,9 @@ function compareScreen(){
 function socialScreen(){
   return `
     <h3>Jess recommended</h3>
-    <div class="sub">Optional, practical recommendation from someone in the household.</div>
     <div class="panel">
       <p><strong>Tomato sauce</strong></p>
       <p>"Get the cheaper Woolworths one. I used it last time and it was fine."</p>
-      <p class="tiny">Why this appears: the list contains tomato sauce and Jess has used this product before.</p>
     </div>
     <div class="btn-row">
       <button class="btn accent" onclick="showToast('Suggestion used')">Use suggestion</button>
@@ -329,7 +349,6 @@ function socialScreen(){
 function alertsScreen(){
   return `
     <h3>Context Alerts</h3>
-    <div class="sub">Two examples of information that may matter at the decision point.</div>
     <div class="panel">
       <h4>Deal nearby</h4>
       <p><strong>Chicken breast</strong></p>
@@ -349,7 +368,6 @@ function alertsScreen(){
 function splitScreen(){
   return `
     <h3>Split Shop</h3>
-    <div class="sub">Optional mode for two people shopping at the same time.</div>
     <div class="split-cols">
       <div class="panel">
         <h4>You</h4>
@@ -361,7 +379,6 @@ function splitScreen(){
       </div>
     </div>
     <div class="divider"></div>
-    <p class="muted">In a real version, an item would disappear from both lists when either person gets it. In testing, the researcher can simulate this manually.</p>
     <button class="btn" onclick="setScreen('shopping','cart')">Back to shop</button>
   `;
 }
@@ -370,7 +387,6 @@ function summaryScreen(){
   const total=state.items.length+state.customItems.length;
   return `
     <h3>Shop Complete</h3>
-    <div class="sub">No calorie score, no healthy leaderboard, no comparison with friends.</div>
     <div class="panel">
       <p><strong>${done} / ${total} items completed</strong></p>
       <p>Spent: <strong>${money(state.spent)}</strong></p>
