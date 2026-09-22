@@ -858,3 +858,151 @@ button {
         grid-template-columns: 1fr;
     }
 }
+
+/* Home screen */
+
+.screen:has(.home-prototype) {
+    min-height: 0;
+}
+
+.home-prototype {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 45px 28px 40px;
+}
+
+
+.home-prototype-title {
+    text-align: center;
+
+    font-size: 46px;
+    line-height: 0.95;
+
+    font-weight: 500;
+
+    margin-bottom: 55px;
+
+    letter-spacing: 1px;
+}
+
+
+.home-prototype-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+.home-menu-card {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background: #fffdf6;
+
+    border: 2px solid #3e3b34;
+    border-radius: 4px;
+
+    color: #1f1f1a;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    text-align: center;
+
+    box-shadow: 3px 4px 0 rgba(62, 59, 52, 0.12);
+
+    transform: none;
+
+    transition:
+        transform 0.1s ease,
+        background 0.1s ease;
+}
+
+
+.home-menu-card:hover {
+    background: #f2ede1;
+    transform: translateY(-2px);
+}
+
+
+.home-menu-card:active {
+    transform: translateY(1px);
+}
+
+
+.home-menu-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+
+.home-menu-icon svg {
+    width: 100%;
+    height: 100%;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 2.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.start-card .home-menu-icon {
+    width: 58px;
+    height: 58px;
+}
+
+
+@media (max-width: 750px) {
+
+    .home-prototype-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-prototype-title {
+        font-size: 40px;
+        margin-bottom: 35px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .home-prototype-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-menu-card {
+        height: 150px;
+    }
+
+}
