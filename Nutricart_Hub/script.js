@@ -311,7 +311,7 @@ function compareScreen(){
     ? [['Price','$4.00','$5.20'],['Per 100 g','$0.80','$1.04'],['Protein','8 g','15 g'],['Sugar','9 g','4 g']]
     : p==='nutrition'
     ? [['Protein','8 g','15 g'],['Sugar','9 g','4 g'],['Price','$4.00','$5.20'],['Per 100 g','$0.80','$1.04']]
-    : [['Preparation','Ready to eat','Ready to eat'],['Price','$4.00','$5.20'],['Protein','8 g','15 g'],['Sugar','9 g','4 g']];
+    : [['Preparation','Need to cook','Ready to eat'],['Price','$4.00','$5.20'],['Protein','8 g','15 g'],['Sugar','9 g','4 g']];
   return `
     <h3>Compare</h3>
     <div class="priority">
